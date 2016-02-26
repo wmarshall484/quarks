@@ -58,12 +58,14 @@ public abstract class TWindowTest extends TopologyAbstractTest{
         TStream<Integer> sizes = window.batch((tuples, key) -> {
             return tuples.size();
         });
-        sizes.print();
+
         Condition<List<Integer> > contents = top.getTester().streamContents(sizes,
-                101, 100, 100, 100, 100, 100, 100, 100, 100, 99);
+	    101, 100, 100, 100, 100, 100, 100, 100, 100, 99);
         complete(top, contents);
-        System.out.println("hi");
-        assertTrue(contents.valid());
+        
+        for(Integer size : contents.getResult()){
+            assertTrue(size > 97 && size < 103);
+        }
     }
     
     @Test
