@@ -60,7 +60,7 @@ public interface TWindow<T, K> extends TopologyElement {
      * most recent tuple represents the most up to date batch of a
      * partition. After a partition is batched, its contents are cleared.
      * 
-     * @param aggregator
+     * @param batcher
      *            Logic to aggregation a partition.
      * @return A stream that contains the latest aggregations of partitions in this window.
      */
